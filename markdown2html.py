@@ -5,6 +5,17 @@ Markdown to HTML
 import sys
 import os
 
+def parsing_headings(line):
+    """Parsing headings Markdown for generating HTML"""
+
+    count_hashtag = line.count("#")
+
+    if 1 <= count_hashtag <= 6:
+        remove_hashtag = line.lstrip("#").strip()
+
+        return f"<h{count_hashtag}>{remove_hashtag}</h{count_hashtag}>\n"
+    return line
+
 def main():
     # Check if correct number of arguments is provided
     if len(sys.argv) < 3:
